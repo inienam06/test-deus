@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class,'index'])->name('home');
+Route::post('/', [HomeController::class,'store'])->name('home.store');
+Route::put('/', [HomeController::class,'update'])->name('home.update');
+Route::delete('{id}', [HomeController::class,'delete'])->name('home.delete');
+// Route::resource('/', HomeController::class)->only(['index']);
